@@ -1,0 +1,8 @@
+{% extends "core/base.html" %}
+
+{% block page_title %}Post: {{ post.name }}{% endblock %}
+
+{% block content %}
+    <div>{{ post.created }}</div>
+    <div>{{ post.author }}</div>
+{% endblock %}
