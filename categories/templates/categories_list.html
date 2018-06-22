@@ -3,6 +3,12 @@
 {% block page_title %}Categories list{% endblock %}
 
 {% block content %}
+     <div>
+         <form action="" method="get">
+             {{ categories_form }}
+             <button>Go!</button>
+         </form>
+     </div>
     {%   for category in categories  %}
         <div>
             <a href="{% url "category_detail" category_id=category.id %}">{{ category.name }}</a>

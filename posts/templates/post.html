@@ -5,4 +5,10 @@
 {% block content %}
     <div>{{ post.created }}</div>
     <div>{{ post.author }}</div>
+    <div>{% for d in comments %}
+        {% for comm in d %}
+            {{ comm.author }}&emap{{ comm.created }}<br>
+            &emap
+        {% endfor %}
+    {% endfor %}</div>
 {% endblock %}

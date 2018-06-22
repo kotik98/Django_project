@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'likes.apps.LikesConfig',
     'categories.apps.CategoriesConfig',
     'debug_toolbar',
-    'comment.apps.CommentConfig',
+    'comments.apps.CommentsConfig',
     'usr_profile.apps.UsrProfileConfig',
     'login.apps.LoginConfig',
     'logout.apps.LogoutConfig',
