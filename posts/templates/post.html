@@ -1,14 +1,18 @@
 {% extends "core/base.html" %}
 
-{% block page_title %}Post: {{ post.name }}{% endblock %}
+{% block page_title %}
+    <div>
+        <a href="{% url "categories" %}">All categories</a>
+        <a href="{% url "new_post" %}">Make post</a>
+    {% if post.author == user %}
+            <a href="{% url "editing_post" post_id=post.id %}">Edit post</a>
+    {%  endif %}
+    </div>
+    Post: {{ post.name }}
+{% endblock %}
 
 {% block content %}
     <div>{{ post.created }}</div>
     <div>{{ post.author }}</div>
-    <div>{% for d in comments %}
-        {% for comm in d %}
-            {{ comm.author }}&emap{{ comm.created }}<br>
-            &emap
-        {% endfor %}
-    {% endfor %}</div>
+    <div>{{ post.content }}</div>
 {% endblock %}

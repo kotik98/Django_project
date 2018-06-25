@@ -1,0 +1,31 @@
+{% extends "core/base.html" %}
+
+{% block page_title %}Main page
+    <div>
+        <a href="{% url "categories" %}">All categories</a>
+        {% if user.username == '' %}
+            <a href="{% url "login" %}">Sign in</a> or
+            <a href="{% url "registration" %}">Sign up</a>
+        {% else %}
+            <a href="{% url "new_post" %}">Make post</a>
+            <a href="{% url "logout" %}">Logout</a>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div>
+    Can be interesting:
+            {%   for category in categories  %}
+            <a href="{% url "category_detail" category_id=category.id %}">{{ category.name }}</a>
+    {% endfor %}
+    </div>
+    <div>
+    The newest posts:
+        {%   for post in posts  %}
+            <div>
+            <a href="{% url "post" post_id=post.id %}">{{ post.name }}</a>(author: {{ post.author }})
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

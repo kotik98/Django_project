@@ -17,22 +17,23 @@ from django.contrib import admin
 from core.views import index
 from django.conf import settings
 from django.conf.urls import include, url
-from usr_profile.views import user_profile
-from login.views import login
-from logout.views import logout
+from login.views import Login
+from logout.views import Logout
 from registration.views import reg
+from usr_profile.views import UserProfile
+from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
-    url(r'^$', index),
+    url(r'^$', index, name='index'),
 
     url(r'^categories/', include('categories.urls')),
 
-    url(r'^profile/(\w+)', user_profile),
-    url(r'^login/$', login),
-    url(r'^logout/$', logout),
-    url(r'^registration/$', reg),
+    url(r'^profile/$', login_required(UserProfile.as_view()), name='profile'),
+    url(r'^login/$', Login.as_view(), name='login'),
+    url(r'^logout/$', Logout.as_view(), name='logout'),
+    url(r'^registration/$', reg, name='registration'),
 
     url(r'', include('posts.urls')),
 ]

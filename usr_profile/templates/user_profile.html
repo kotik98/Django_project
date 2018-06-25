@@ -1,0 +1,16 @@
+{% extends "core/base.html" %}
+
+{% block page_title %}
+    <div>
+        <a href="{% url "index" %}">Main page</a>
+        <a href="{% url "categories" %}">All categories</a>
+        <a href="{% url "new_post" %}">Make post</a>
+        <a href="{% url "logout" %}">Logout</a>
+    </div>
+    Profile
+{% endblock %}
+
+{% block content %}
+
+    <div>Hello, {{ user.username }}</div>
+{% endblock %}

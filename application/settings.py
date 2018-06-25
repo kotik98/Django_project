@@ -130,6 +130,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+LOGIN_URL = 'login'
+
+LOGOUT_URL = 'logout'
+
+REGISTRATION_URL = 'registration'
+
 INTERNAL_IPS = ('127.0.0.1', 'localhost')
 
 DEBUG_TOOLBAR_CONFIG = {'INTERCEPT_REDIRECTS': False, }

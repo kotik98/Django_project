@@ -1,0 +1,13 @@
+{% extends "core/base.html" %}
+
+{% block page_title %}Edit post {{ post.name }}{% endblock %}
+
+{% block content %}
+         <form action="" method="post" autocomplete="on">
+         {% csrf_token %}
+             <div>{{ form.name.label_tag }} {{ form.name }}</div>
+              <div>Choose category {{ form.categories }}</div>
+             <div>{{ form.content.label_tag }} {{ form.content }}</div>
+             <p><input type="submit" value="Edit post"></p>
+         </form>
+{% endblock %}
