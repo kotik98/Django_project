@@ -1,13 +1,16 @@
 {% extends "core/base.html" %}
-
-{% block page_title %}Edit post {{ post.name }}{% endblock %}
+{% load bootstrap3 %}
+{% block backward %}
+    <a href="{% url "post" post_id=post.id%}">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+{% endblock %}
 
 {% block content %}
+    <h4>Edit post {{ post.name }}</h4>
          <form action="" method="post" autocomplete="on">
-         {% csrf_token %}
-             <div>{{ form.name.label_tag }} {{ form.name }}</div>
-              <div>Choose category {{ form.categories }}</div>
-             <div>{{ form.content.label_tag }} {{ form.content }}</div>
+             {% csrf_token %}
+             {% bootstrap_form form show_label=False %}
              <p><input type="submit" value="Edit post"></p>
          </form>
 {% endblock %}

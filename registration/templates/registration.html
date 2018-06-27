@@ -1,12 +1,12 @@
 {% extends "core/base.html" %}
-
-{% block page_title %}Registration{% endblock %}
+{% load bootstrap3 %}
 
 {% block content %}
+     <h4>Sign up</h4>
         <div>
-         <form action="" method="post">
+         <form action="" method="post" autocomplete="on">
              {% csrf_token %}
-             <div>{{ form.as_p }}</div>
+             {% bootstrap_form form show_label=True %}
              <p><input type="submit" value="Sign up"></p>
          </form>
     </div>

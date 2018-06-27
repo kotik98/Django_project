@@ -11,7 +11,7 @@ class Post(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='author', verbose_name='Автор')
-    categories = models.ManyToManyField(Category, blank=True, related_name='categories', verbose_name='Категории')
+    categories = models.ManyToManyField(Category, blank=False, related_name='categories', verbose_name='Категории')
     name = models.CharField(max_length=50, unique=True, verbose_name='Имя')
     content = models.TextField(verbose_name='Содержимое поста', max_length=255)
     is_archive = models.BooleanField(default=False)

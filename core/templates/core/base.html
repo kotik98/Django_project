@@ -1,16 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
+{% load bootstrap3%}
+<!doctype html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <title>My site</title>
 </head>
 <body>
-<h1>My site</h1>
-<h3>{% block page_title %}{% endblock %}</h3>
-<div>{% block content %}{% endblock %}</div>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid" >
+            <ul class="nav navbar-nav">
+                <li>
+                    {% block backward %}
+                    {% endblock %}
+                </li>
+            </ul>
+            <div class="navbar-header">
+                <div class="navbar-brand">
+                    My site
+                </div>
+            </div>
+            <ul class="nav navbar-nav">
+                  <li>    <a href="{% url "index" %}">
+                            <span class="glyphicon glyphicon-home"></span>
+                            </a></li>
+                  <li><a href="{% url "categories" %}">Categories</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url "new_post" %}">New post</a></li>
+                {% endif %}
+            </ul>
+            {% block searchform %}
+            {% endblock %}
+            <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                    <li class="active"><a href="{% url "profile" %}"><span class="glyphicon glyphicon-user"></span> {{user.username }}</a></li>
+                    <li><a href="{% url "logout" %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                {% else %}
+                    <li><a href="{% url "registration" %}"><span class="glyphicon glyphicon-user"></span> Sign up</a></li>
+                    <li><a href="{% url "login" %}"><span class="glyphicon glyphicon-log-in"></span> Sign in</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        {% block content %}
+
+        {% endblock %}
+    </div>
 </body>
 
-<footer>
-    footer
+<footer class="page-footer font-small mdb-color lighten-3 pt-4 mt-4">
+  <div class="footer-copyright text-center py-3">
+      <p class="text-center">created by Zakharin Bogdan</p><br>
+  </div>
 </footer>
-</html>

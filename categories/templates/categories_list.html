@@ -1,10 +1,7 @@
 {% extends "core/base.html" %}
 
-{% block page_title %}Categories list
-    <div><a href="{% url "index" %}">Main page</a></div>
-{% endblock %}
-
 {% block content %}
+    <h4>Categories</h4>
      <div>
          <form action="" method="get">
              {{ categories_form }}

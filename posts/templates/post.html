@@ -1,18 +1,20 @@
 {% extends "core/base.html" %}
 
-{% block page_title %}
-    <div>
-        <a href="{% url "categories" %}">All categories</a>
-        <a href="{% url "new_post" %}">Make post</a>
     {% if post.author == user %}
             <a href="{% url "editing_post" post_id=post.id %}">Edit post</a>
     {%  endif %}
-    </div>
-    Post: {{ post.name }}
-{% endblock %}
 
 {% block content %}
+    <h4>Post: {{ post.name }}</h4>
     <div>{{ post.created }}</div>
-    <div>{{ post.author }}</div>
-    <div>{{ post.content }}</div>
+    <div>author: {{ post.author }}</div>
+    <div><br></div>
+    <div><h3>{{ post.content }}</h3></div>
+
+
+    <div>
+        {% if user.id == post.author.id %}
+            <a href="{% url "editing_post" post_id=post.id %}"> Edit </a>
+        {% endif %}
+    </div>
 {% endblock %}

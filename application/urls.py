@@ -19,7 +19,7 @@ from django.conf import settings
 from django.conf.urls import include, url
 from login.views import Login
 from logout.views import Logout
-from registration.views import reg
+from registration.views import RegistrationView
 from usr_profile.views import UserProfile
 from django.contrib.auth.decorators import login_required
 
@@ -33,7 +33,7 @@ urlpatterns = [
     url(r'^profile/$', login_required(UserProfile.as_view()), name='profile'),
     url(r'^login/$', Login.as_view(), name='login'),
     url(r'^logout/$', Logout.as_view(), name='logout'),
-    url(r'^registration/$', reg, name='registration'),
+    url(r'^registration/$', RegistrationView.as_view(), name='registration'),
 
     url(r'', include('posts.urls')),
 ]

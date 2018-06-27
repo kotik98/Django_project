@@ -1,11 +1,7 @@
 {%  extends "core/base.html" %}
 
-{% block page_title %}<a href="{% url "categories" %}">{{ 'All categories' }}</a>
-    <a href="{% url "new_post" %}">Make post</a>
-    <div>Category: {{ category.name }}</div>{% endblock %}
-
 {% block content %}
-
+    <h4>Category: {{ category.name }}</h4>
     <div>
     {%  for post in posts %}
         <div><a href="{% url "post" post_id=post.id %}">{{  post.name }}</a></div>
